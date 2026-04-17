@@ -1,51 +1,76 @@
 <script setup lang="ts">
+import { ElMessage } from 'element-plus';
+
 definePageMeta({
   layout: 'hero',
 });
 
-const router = useRouter();
-const loginVal = ref('');
-const passVal = ref('');
-const loginText = 'Введите логин';
-const passText = 'Введите пароль';
+const loginVal = ref('admin');
+const passVal = ref('admin');
+const loading = ref(false);
 
-const goProfile = () => {
-  router.push(`/profile`);
+const goProfile = async () => {
+  loading.value = true;
+  try {
+    const { data, error } = await useFetch('/api/v1/login', {
+      method: 'POST',
+      body: {
+        login: loginVal.value,
+        password: passVal.value
+      }
+    });
+
+    if (error.value) {
+      ElMessage.error(error.value.statusMessage || 'Ошибка авторизации');
+      return;
+    }
+
+    if (data.value) {
+      ElMessage.success('Добро пожаловать!');
+      await navigateTo('/profile');
+    }
+  } catch (e) {
+    ElMessage.error('Произошла непредвиденная ошибка');
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
+
 <template>
   <el-form size="large" class="auth-form wide-btns">
     <h2 class="text-center">Войти</h2>
     <el-form-item>
-      <ElButton @click="goProfile" style="width: 100%;">
+      <ElButton @click="goProfile" style="width: 100%;" :loading="loading">
         <el-icon class="el-icon--left"><IconTelegram /></el-icon> Telegram
       </ElButton>
     </el-form-item>
     <el-form-item>
-      <ElButton @click="goProfile" style="width: 100%;">
+      <ElButton @click="goProfile" style="width: 100%;" :loading="loading">
         <el-icon class="el-icon--left"><IconGoogle /></el-icon> Google
       </ElButton>
     </el-form-item>
     <el-divider>или</el-divider>
     <el-form-item>
-      <ElInput v-model="loginVal" :placeholder="loginText" />
+      <ElInput v-model="loginVal" placeholder="Введите логин" />
     </el-form-item>
     <el-form-item>
       <ElInput
         v-model="passVal"
         type="password"
-        :placeholder="passText"
+        placeholder="Введите пароль"
         show-password
       />
     </el-form-item>
     <el-form-item>
-      <ElButton type="primary" @click="goProfile" style="width: 100%;">
+      <ElButton type="primary" @click="goProfile" style="width: 100%;" :loading="loading">
         Продолжить
       </ElButton>
     </el-form-item>
     <ConnectWallet />
   </el-form>
 </template>
+
 <style lang="scss">
 .auth-form {
   h2.text-center {
