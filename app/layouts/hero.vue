@@ -21,6 +21,10 @@
   overflow: hidden;
   .container > .el-card {
     min-width: 430px;
+
+    @media screen and (max-width: 768px) {
+      min-width: 350px;
+    }
   }
 }
 </style>

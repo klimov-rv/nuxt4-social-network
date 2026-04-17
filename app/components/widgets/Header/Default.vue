@@ -37,7 +37,7 @@ const handleSelect = (newIndex) => {
     :ellipsis="false"
   >
     <el-menu-item index="0">
-      <Logo style="width: 100px;" />
+      <Logo />
     </el-menu-item>
     <div style="flex-grow: 1;" />
     <el-menu-item index="1">
