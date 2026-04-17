@@ -16,8 +16,8 @@ const goProfile = async () => {
       method: 'POST',
       body: {
         login: loginVal.value,
-        password: passVal.value
-      }
+        password: passVal.value,
+      },
     });
 
     if (error.value) {
@@ -26,7 +26,12 @@ const goProfile = async () => {
     }
 
     if (data.value) {
-      ElMessage.success('Добро пожаловать!');
+      ElNotification({
+        title: 'Добро пожаловать!',
+        message: 'Вы успешно вошли в систему',
+        type: 'success',
+      });
+
       await navigateTo('/profile');
     }
   } catch (e) {
@@ -63,7 +68,12 @@ const goProfile = async () => {
       />
     </el-form-item>
     <el-form-item>
-      <ElButton type="primary" @click="goProfile" style="width: 100%;" :loading="loading">
+      <ElButton
+        type="primary"
+        @click="goProfile"
+        style="width: 100%;"
+        :loading="loading"
+      >
         Продолжить
       </ElButton>
     </el-form-item>

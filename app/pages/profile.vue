@@ -10,14 +10,6 @@ const { data: user } = await useAsyncData(`user-${slug}`, () => {
 useSeoMeta({
   title: user.value?.name || 'Мой профиль',
 });
-
-onMounted(() => {
-  ElNotification({
-    title: 'Успех',
-    message: 'Вы успешно вошли в систему',
-    type: 'success',
-  });
-});
 </script>
 
 <template>

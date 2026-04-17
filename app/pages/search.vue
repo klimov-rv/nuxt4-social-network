@@ -13,10 +13,8 @@ const { data: users } = await useAsyncData('all-users', () =>
 const filteredUsers = computed(() => {
   const query = input_value.value.toLowerCase().trim();
   if (!query) return [];
-
-  return (
-    users.value?.filter((user) => user.name?.toLowerCase().includes(query)) ||
-    []
+  return users.value?.filter((user) =>
+    user.meta.name?.toLowerCase().includes(query),
   );
 });
 
@@ -40,7 +38,6 @@ const handleSelect = (path: string) => {
         </template>
       </el-input>
     </div>
-
     <div v-if="input_value" class="search-results">
       <h3 class="mb-4">Результаты поиска:</h3>
 
@@ -58,14 +55,16 @@ const handleSelect = (path: string) => {
         >
           <div class="flex items-center">
             <el-avatar :size="50" :src="user.avatar" class="mr-4">
-              {{ user.name?.charAt(0) }}
+              {{ user.meta.name?.charAt(0) }}
             </el-avatar>
             <div>
-              <div class="font-bold text-lg">{{ user.name }}</div>
+              <div class="font-bold text-lg">{{ user.meta.name }}</div>
               <div class="text-gray-500 text-sm">
-                <el-icon><Location /></el-icon> {{ user.location }}
+                <el-icon><Location /></el-icon> {{ user.meta.location }}
               </div>
-              <div class="text-yellow-500 text-sm">⭐ {{ user.rating }}</div>
+              <div class="text-yellow-500 text-sm">
+                ⭐ {{ user.meta.rating }}
+              </div>
             </div>
           </div>
         </el-card>
