@@ -1,0 +1,50 @@
+@use './global/reset.scss';
+@use './global/fonts.scss';
+@use './global/simple-adaptive-grid.css';
+@use './global/element/critical.scss';
+
+:root {
+  --color-secondary: #8f9499;
+  --color-border: #e7e7e7;
+  --color-gray: #ebebeb;
+  --color-yellow: #f9c21c;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border: 0px solid var(--color-secondary);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-yellow);
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+// Глобальные классы - переопределение
+// ==============================================
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.main-app-block {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  background-color: var(--color-gray);
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}

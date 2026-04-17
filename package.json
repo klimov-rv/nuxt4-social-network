@@ -1,0 +1,52 @@
+{
+  "name": "argito_social",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "dev:no-lint": "nuxt dev --no-lint",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "eslint --fix .",
+    "lint-staged": "lint-staged",
+    "test": "vitest run"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,css,scss,md}": "prettier --write"
+  },
+  "dependencies": {
+    "@element-plus/nuxt": "^1.1.5",
+    "@nuxt/content": "^3.13.0",
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/image": "^2.0.0",
+    "@nuxtjs/i18n": "^10.2.4",
+    "@pinia/nuxt": "^0.11.3",
+    "@tonconnect/sdk": "^3.4.1",
+    "@tonconnect/ui": "^2.4.4",
+    "better-sqlite3": "^12.9.0",
+    "nuxt": "^4.4.2",
+    "sass": "^1.99.0",
+    "vue": "^3.5.32",
+    "vue-router": "^5.0.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@nuxt/test-utils": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^8.58.2",
+    "@typescript-eslint/parser": "^8.58.2",
+    "eslint": "^10.2.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^10.8.0",
+    "happy-dom": "^20.9.0",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.4"
+  }
+}

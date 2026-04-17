@@ -1,0 +1,16 @@
+{
+  "title": "Argito Social - Социальная сеть",
+  "meta": [
+    {
+      "charset": "utf-8"
+    },
+    {
+      "name": "viewport",
+      "content": "width=device-width, initial-scale=1"
+    },
+    {
+      "name": "description",
+      "content": "Глобальная P2P-платформа для объявлений с оплатой криптовалютой и мультивалютой"
+    }
+  ]
+}
