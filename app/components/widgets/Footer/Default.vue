@@ -13,6 +13,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   .build-timestamp {
     position: absolute;
     right: 0;

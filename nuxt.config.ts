@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import __BUILD_TIME__ from './app/buildTime.js';
+import __BUILD_TIME__ from './server/buildTime.js';
 import appSEO from './data/seo.json';
 
 export default defineNuxtConfig({

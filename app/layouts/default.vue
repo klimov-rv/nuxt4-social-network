@@ -2,9 +2,14 @@
 import { Share } from '@element-plus/icons-vue';
 const route = useRoute();
 const isMyProfile = computed(() => route.name === 'profile');
+const isSearch = computed(() => route.name === 'search');
 
 const pageTitle = computed(() =>
-  isMyProfile.value ? 'Мой профиль' : 'Профиль пользователя',
+  isMyProfile.value
+    ? 'Мой профиль'
+    : !isSearch.value
+    ? 'Профиль пользователя'
+    : 'Поиск',
 );
 
 const showBackButton = computed(() => !isMyProfile.value);
@@ -15,16 +20,16 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="main-app-block default-bg">
-    <HeaderDefault />
-    <main class="container profile-page">
+  <div class="main-app-block default-bg" :class="{ search: isSearch }">
+    <HeaderDefault :currentPage="route.name" />
+    <main class="container container-card">
       <el-card :class="showBackButton ? `show-back-btn` : `hide-back-btn`">
         <el-page-header @back="goBack">
           <template #content>
             <h2 class="profile-title">{{ pageTitle }}</h2>
           </template>
 
-          <template #extra>
+          <template v-if="!isSearch" #extra>
             <el-button :icon="Share" circle />
           </template>
         </el-page-header>
@@ -46,7 +51,7 @@ const goBack = () => {
   }
 }
 
-.profile-page {
+.container-card {
   display: flex;
   flex-grow: 1;
   justify-content: center;
