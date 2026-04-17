@@ -67,7 +67,7 @@ const goProfile = async () => {
         Продолжить
       </ElButton>
     </el-form-item>
-    <ConnectWallet />
+    <!-- <ConnectWallet /> -->
   </el-form>
 </template>
 

@@ -3,9 +3,9 @@
     <el-text>
       © 2026
     </el-text>
-    <el-link href="/el-playground-demo" type="primary">
+    <!-- <el-link href="/el-playground-demo" type="primary">
       <el-icon><ElIconElementPlus /></el-icon> element-plus-demo
-    </el-link>
+    </el-link> -->
   </div>
 </template>
 
